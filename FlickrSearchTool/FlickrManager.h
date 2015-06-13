@@ -6,8 +6,14 @@
 //  Copyright (c) 2015 Andrew Liu. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+
+typedef void(^urlBlock)(NSString *totalPages, NSArray *arrayOfPhotoURL, NSError *error);
+typedef void(^imageblock)(UIImage *image, NSError *error);
 
 @interface FlickrManager : NSObject
+
++ (void)search:(NSString *)term in:(NSString *)page retrievePhotoURLWithCompletion:(urlBlock)complete;
++ (void)load:(NSString *)urlString retrievePhotoImagesWithCompletion:(imageblock)complete;
 
 @end
